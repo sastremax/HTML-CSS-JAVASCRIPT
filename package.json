@@ -1,0 +1,12 @@
+{
+  "name": "proyecto",
+  "version": "1.0.0",
+  "description": "Este proyecto es una página web desarrollada con HTML y CSS.  \r El objetivo fue construir un sitio completo para una tienda de computadoras, componentes y artículos electrónicos, aplicando todas las herramientas vistas desde la Clase 1 hasta la Clase 7.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
