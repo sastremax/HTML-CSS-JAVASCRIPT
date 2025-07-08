@@ -38,3 +38,36 @@ if (isNaN(clientAge)) {
     }
 }
 
+let age = 22
+let isVIP = true
+
+if (isNaN(age)) {
+    console.log("Por favor ingresá una edad válida.")
+} else if (age >= 18 && isVIP) {
+    console.log("Acceso permitido al área exclusiva.")
+} else if (age >= 18) {
+    console.log("Acceso permitido al evento.")
+} else {
+    console.log("Acceso denegado.")
+}
+
+let products = [
+    { name: "Notebook", price: 150000, discount: true },
+    { name: "Mouse", price: 5000, discount: false },
+    { name: "Monitor", price: 60000, discount: true }
+]
+
+let withDiscount = 0
+let withoutDiscount = 0
+
+for (let i = 0; i < products.length; i++) {
+    if (products[i].discount) {
+        console.log(products[i].name + " tiene descuento.")
+        withDiscount++
+    } else {
+        withoutDiscount++
+    }
+}
+
+console.log("Total con descuento: " + withDiscount)
+console.log("Total sin descuento: " + withoutDiscount)  
