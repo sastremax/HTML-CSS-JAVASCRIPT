@@ -1,3 +1,60 @@
+document.addEventListener("DOMContentLoaded", () => {
+    let botonesCarrito = document.querySelectorAll(".add-to-cart")
+
+    if (botonesCarrito.length === 0) {
+        console.log("No se encontraron botones de carrito.")
+    }
+
+    botonesCarrito.forEach(boton => {
+        boton.addEventListener("click", () => {
+            let card = boton.closest(".product-card")
+            if (!card) return
+            let nombre = card.querySelector("h3")?.textContent
+            if (nombre) {
+                console.log("Producto agregado:", nombre)
+            } else {
+                console.log("No se pudo obtener el nombre del producto.")
+            }
+        })
+    })
+})
+
+let botonAgregar = document.getElementById("agregarElemento")
+let lista = document.getElementById("listaDinamica")
+
+botonAgregar.addEventListener("click", () => {
+    let nuevo = document.createElement("li")
+    nuevo.textContent = "Nuevo Elemento"
+    lista.appendChild(nuevo)
+    alert("Se ha añadido un nuevo elemento")
+})
+
+let botonReview = document.getElementById("agregarReviewNotebook")
+let contenedor = document.getElementById("contenedorResenas")
+
+botonReview.addEventListener("click", () => {
+    let card = document.createElement("div")
+    card.className = "resena"
+    card.innerHTML = 
+    `
+    <h4>Notebook Gamer Acer</h4>
+    <p>Excelente calidad y entrega rápida.</p>
+    <p>⭐⭐⭐⭐⭐</p>`
+    contenedor.appendChild(card)
+})
+
+let botonesCarrito = document.querySelectorAll(".add-to-cart")
+
+botonesCarrito.forEach(boton => {
+    boton.addEventListener("click", () => {
+        let nombreProducto = boton.closest(".product-card").querySelector("h3").textContent
+        console.log("Producto agregado:", nombreProducto)
+    })
+})
+
+
+
+/*
 console.log("JavaScript funcionando correctamente");
 
 let price1 = parseFloat(prompt("Ingresá el precio del primer producto"));
@@ -91,3 +148,4 @@ function calcularPrecioFinal(nombreProducto, precio, iva = 21) {
 
 calcularPrecioFinal("Notebook Gamer", 350000);
 calcularPrecioFinal("Mouse", 5000, 10);
+*/
