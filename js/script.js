@@ -22,3 +22,19 @@ if (isNaN(price1) || isNaN(price2)) {
         console.log("No alcanza el minimo para envio gratis.");
     }
 }
+
+let clientName = prompt("Ingresá tu nombre:");
+let clientAge = parseInt(prompt("Ingresá tu edad:"));
+
+if (isNaN(clientAge)) {
+    console.log("Edad no valida.");
+} else {
+    console.log("Cliente: " + clientName + " Edad: " + clientAge);
+
+    if (clientAge >= 18) {
+        console.log("Puede realizar compras sin restricciones.");
+    } else {
+        console.log("Puede realizar compras por no ser un adulto para comprar.");
+    }
+}
+
