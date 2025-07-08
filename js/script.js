@@ -71,3 +71,23 @@ for (let i = 0; i < products.length; i++) {
 
 console.log("Total con descuento: " + withDiscount)
 console.log("Total sin descuento: " + withoutDiscount)  
+
+function verificarEdadCliente(nombre, edad) {
+    if (edad >= 18) {
+        console.log(nombre + " puede realizar compras sin restricciones.");
+    } else {
+        console.log(nombre + " es menor de edad.");
+        console.log("Le faltan " + (18 - edad) + " años para poder comprar algunos productos.");
+    }
+}
+
+verificarEdadCliente("Maxi", 16);
+
+function calcularPrecioFinal(nombreProducto, precio, iva = 21) {
+    let total = precio + (precio * iva / 100);
+    console.log("Producto: " + nombreProducto);
+    console.log("Precio final con IVA: $" + total);
+}
+
+calcularPrecioFinal("Notebook Gamer", 350000);
+calcularPrecioFinal("Mouse", 5000, 10);
