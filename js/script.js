@@ -19,9 +19,18 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    function agregarProductoCarrito(producto) {
+    function agregarProductoCarrito(nuevoProducto) {
         let carrito = JSON.parse(localStorage.getItem("carrito")) || []
-        carrito.push(producto)
+
+        let productoExistente = carrito.find(p => p.id == nuevoProducto.id)
+
+        if (productoExistente) {
+            productoExistente.cantidad += 1
+        } else {
+            nuevoProducto.cantidad = 1
+            carrito.push(nuevoProducto)
+        }
+
         localStorage.setItem("carrito", JSON.stringify(carrito))
         sessionStorage.setItem("carrito", JSON.stringify(carrito))
         actualizarContadorCarrito()
@@ -34,14 +43,20 @@ document.addEventListener("DOMContentLoaded", () => {
             let producto = {
                 id: boton.getAttribute("data-id"),
                 nombre: boton.getAttribute("data-nombre"),
-                precio: boton.getAttribute("data-precio")
+                precio: parseFloat(boton.getAttribute("data-precio")),
+                cantidad: 1
             }
             agregarProductoCarrito(producto)
         })
     })
 
     fetch("https://fakestoreapi.com/products/category/electronics")
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
         .then(data => {
             let contenedorAPI = document.getElementById("productos-api")
             if (contenedorAPI) {
@@ -60,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
         Añadir al carrito
     </button>
     `
-                        contenedorAPI.appendChild(tarjeta)
+                    contenedorAPI.appendChild(tarjeta)
                 })
 
                 document.querySelectorAll("#productos-api .add-to-cart").forEach(boton => {
@@ -68,7 +83,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         let producto = {
                             id: boton.getAttribute("data-id"),
                             nombre: boton.getAttribute("data-nombre"),
-                            precio: boton.getAttribute("data-precio")
+                            precio: parseFloat(boton.getAttribute("data-precio")),
+                            cantidad: 1
                         }
                         agregarProductoCarrito(producto)
                     })
@@ -76,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         })
         .catch(error => {
-            console.error("Error al obtener productos:", error)
+            console.error("Error en la comunicación con la API:", error)
             let contenedor = document.getElementById("productos-api")
             if (contenedor) {
                 contenedor.innerHTML = "<p>Hubo un problema al cargar los productos.</p>"

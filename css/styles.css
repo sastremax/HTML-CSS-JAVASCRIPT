@@ -214,6 +214,7 @@ td {
 	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 	max-width: 600px;
 	margin: 0 auto;
+	margin-bottom: 60px;
 }
 
 .contact-section label {
@@ -925,12 +926,12 @@ hr {
 }
 
 #lista-carrito li {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #222;
+    margin-bottom: 20px;
+    padding: 12px;
+    background-color: #fff;
+    border-radius: 8px;
+    list-style: none;
+    color: #000;
 }
 
 #lista-carrito li button {
@@ -1007,6 +1008,51 @@ hr {
 	color: #ccc;
 	list-style: disc;
 	padding-left: 20px;
+}
+
+.controles-cantidad {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 4px;
+}
+
+.controles-cantidad button {
+    padding: 2px 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.carrito-linea {
+    margin-bottom: 4px;
+    font-size: 1rem;
+	color: #000;
+}
+
+.carrito-linea.controles-cantidad {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.carrito-linea .btn-eliminar {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 4px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.carrito-linea button {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
 }
 
 
