@@ -204,7 +204,7 @@ td {
 	text-align: left;
 }
 
-.contact-section form {
+.contact-section {
 	display: flex;
 	flex-direction: column;
 	gap: 15px;
@@ -216,30 +216,45 @@ td {
 	margin: 0 auto;
 }
 
-.contact-section form label {
+.contact-section label {
 	color: #fff;
-	margin-bottom: 5px;
 	text-transform: uppercase;
 	font-weight: bold;
-}
-
-label {
-	font-size: 1.1rem;
-	margin-bottom: 5px;
+	font-size: 1rem;
 }
 
 .contact-section input,
-textarea {
+.contact-section textarea,
+.contact-section select {
 	background-color: #000;
 	color: #fff;
 	border: 1px solid #ff7a00;
 	border-radius: 5px;
 	padding: 12px;
 	font-size: 1rem;
+	width: 100%;
+	box-sizing: border-box;
 }
 
-input:focus,
-textarea:focus {
+.contact-section input::placeholder,
+.contact-section textarea::placeholder {
+	color: #bbb;
+	font-style: italic;
+}
+
+.contact-section textarea {
+	resize: vertical;
+	min-height: 100px;
+}
+
+.contact-section select {
+	appearance: none;
+	cursor: pointer;
+}
+
+.contact-section input:focus,
+.contact-section textarea:focus,
+.contact-section select:focus {
 	outline: none;
 	border-color: #ffa726;
 	box-shadow: 0 0 5px #ffa726;
@@ -253,6 +268,8 @@ textarea:focus {
 	border: none;
 	border-radius: 6px;
 	font-weight: bold;
+	cursor: pointer;
+	width: 100%;
 	transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -461,16 +478,35 @@ form textarea {
 	gap: 20px;
 }
 
-.resena h3 {
-	color: #ff7a00;
-	font-size: 1.2rem;
-	margin-bottom: 10px;
+.reseña h3 {
+    color: #ff7a00;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
 }
 
-.resena p {
-	color: #ccc;
-	margin-bottom: 20px;
-	line-height: 1.6;
+.reseña p {
+    color: #ccc;
+    margin: 5px 0;
+    line-height: 1.5;
+}
+
+.reseñas-column {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.reseñas-column .resena {
+    padding: 20px 0;
+    border-top: 1px solid #444;
+}
+
+.reseñas-column .resena:first-child {
+    border-top: none;
+}
+
+.reseñas-column .resena:last-child {
+    border-bottom: none;
 }
 
 hr {
@@ -816,6 +852,44 @@ hr {
     margin-top: 20px;
 }
 
+.carrito-panel {
+	background-color: #111927;
+	color: white;
+	max-width: 400px;
+	margin: 40px auto;
+	padding: 30px 20px;
+	border-radius: 12px;
+	box-shadow: 0 4px 20px rgba(255, 122, 0, 0.1);
+	text-align: center;
+}
+
+.carrito-panel h3 {
+	font-size: 1.5rem;
+	color: #ff7a00;
+	margin-bottom: 10px;
+}
+
+.carrito-panel p {
+	font-size: 1.1rem;
+	margin-bottom: 20px;
+}
+
+.carrito-panel button {
+	padding: 10px 20px;
+	background-color: #c62828;
+	color: white;
+	border: none;
+	border-radius: 8px;
+	font-size: 16px;
+	cursor: pointer;
+	font-weight: bold;
+	transition: background-color 0.3s ease;
+}
+
+.carrito-panel button:hover {
+	background-color: #b71c1c;
+}
+
 #vaciar-carrito {
     padding: 10px 20px;
     background-color: #c62828;
@@ -881,6 +955,61 @@ hr {
     50% { transform: scale(1.2); }
     100% { transform: scale(1); }
 }
+
+.preguntas-personales {
+	background-color: #111927;
+	color: white;
+	max-width: 600px;
+	margin: 40px auto;
+	padding: 30px 20px;
+	border-radius: 12px;
+	box-shadow: 0 4px 20px rgba(255, 122, 0, 0.1);
+	text-align: center;
+}
+
+.preguntas-personales h2 {
+	color: #f4f4a0;
+	margin-bottom: 10px;
+	font-size: 1.6rem;
+}
+
+.preguntas-personales input {
+	width: 100%;
+	padding: 12px;
+	margin: 10px 0;
+	border: 1px solid #ff7a00;
+	border-radius: 6px;
+	background-color: #000;
+	color: white;
+	font-size: 1rem;
+	box-sizing: border-box;
+}
+
+.preguntas-personales button {
+	background-color: #ff7a00;
+	color: white;
+	border: none;
+	padding: 12px 20px;
+	border-radius: 6px;
+	cursor: pointer;
+	font-weight: bold;
+	font-size: 1rem;
+	transition: background-color 0.3s ease;
+}
+
+.preguntas-personales button:hover {
+	background-color: #e06d00;
+}
+
+.preguntas-personales ul {
+	text-align: left;
+	margin-top: 20px;
+	color: #ccc;
+	list-style: disc;
+	padding-left: 20px;
+}
+
+
 
 @media only screen and (max-width: 768px) {
 	nav ul {

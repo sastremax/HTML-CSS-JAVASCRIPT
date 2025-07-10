@@ -1,16 +1,32 @@
 document.addEventListener("DOMContentLoaded", () => {
     let botonesCarrito = document.querySelectorAll(".add-to-cart")
 
-    if (botonesCarrito.length === 0) {
-        console.log("No se encontraron botones de carrito.")
-    }
-
     function actualizarContadorCarrito() {
         let carrito = JSON.parse(localStorage.getItem("carrito")) || []
         let contador = document.getElementById("contador-carrito")
         if (contador) {
             contador.textContent = carrito.length
         }
+    }
+
+    function animarCarrito() {
+        let carritoIcono = document.getElementById("carrito-info")
+        if (carritoIcono) {
+            carritoIcono.classList.add("animado")
+            setTimeout(() => {
+                carritoIcono.classList.remove("animado")
+            }, 300)
+        }
+    }
+
+    function agregarProductoCarrito(producto) {
+        let carrito = JSON.parse(localStorage.getItem("carrito")) || []
+        carrito.push(producto)
+        localStorage.setItem("carrito", JSON.stringify(carrito))
+        sessionStorage.setItem("carrito", JSON.stringify(carrito))
+        actualizarContadorCarrito()
+        animarCarrito()
+        alert("Producto añadido al carrito")
     }
 
     botonesCarrito.forEach(boton => {
@@ -20,23 +36,52 @@ document.addEventListener("DOMContentLoaded", () => {
                 nombre: boton.getAttribute("data-nombre"),
                 precio: boton.getAttribute("data-precio")
             }
-
-            let carrito = JSON.parse(localStorage.getItem("carrito")) || []
-            carrito.push(producto)
-            localStorage.setItem("carrito", JSON.stringify(carrito))
-            sessionStorage.setItem("carrito", JSON.stringify(carrito))
-            actualizarContadorCarrito()
-            
-            let carritoIcono = document.getElementById("carrito-info")
-
-            if (carritoIcono) {
-                carritoIcono.classList.add("animado")
-                setTimeout(() => {
-                    carritoIcono.classList.remove("animado")
-                }, 300)
-            }
+            agregarProductoCarrito(producto)
         })
     })
+
+    fetch("https://fakestoreapi.com/products/category/electronics")
+        .then(response => response.json())
+        .then(data => {
+            let contenedorAPI = document.getElementById("productos-api")
+            if (contenedorAPI) {
+                data.forEach(producto => {
+                    let tarjeta = document.createElement("div")
+                    tarjeta.classList.add("product-card")
+                    tarjeta.innerHTML = `
+    <img src="${producto.image}" alt="${producto.title}" class="product-image">
+    <h3>
+        ${producto.title}
+    </h3>
+    <p class="price">
+        $${producto.price}
+    </p>
+    <button class="add-to-cart" data-id="${producto.id}" data-nombre="${producto.title}" data-precio="${producto.price}">
+        Añadir al carrito
+    </button>
+    `
+                        contenedorAPI.appendChild(tarjeta)
+                })
+
+                document.querySelectorAll("#productos-api .add-to-cart").forEach(boton => {
+                    boton.addEventListener("click", () => {
+                        let producto = {
+                            id: boton.getAttribute("data-id"),
+                            nombre: boton.getAttribute("data-nombre"),
+                            precio: boton.getAttribute("data-precio")
+                        }
+                        agregarProductoCarrito(producto)
+                    })
+                })
+            }
+        })
+        .catch(error => {
+            console.error("Error al obtener productos:", error)
+            let contenedor = document.getElementById("productos-api")
+            if (contenedor) {
+                contenedor.innerHTML = "<p>Hubo un problema al cargar los productos.</p>"
+            }
+        })
 
     actualizarContadorCarrito()
 
@@ -52,18 +97,30 @@ document.addEventListener("DOMContentLoaded", () => {
         })
     }
 
-    let botonReview = document.getElementById("agregarReviewNotebook")
-    let contenedor = document.getElementById("contenedorResenas")
+    let formReseña = document.getElementById("form-reseña")
 
-    if (botonReview && contenedor) {
-        botonReview.addEventListener("click", () => {
-            let card = document.createElement("div")
-            card.className = "resena"
-            card.innerHTML = `
-                <h4>Notebook Gamer Acer</h4>
-                <p>Excelente calidad y entrega rápida.</p>
-                <p>⭐⭐⭐⭐⭐</p>`
-            contenedor.appendChild(card)
+    if (formReseña) {
+        formReseña.addEventListener("submit", (e) => {
+            e.preventDefault()
+
+            let nombre = document.getElementById("nombreAutor").value
+            let titulo = document.getElementById("tituloReseña").value
+            let comentario = document.getElementById("contenidoReseña").value
+            let estrellas = document.getElementById("estrellasReseña").value
+
+            let nuevaReseña = {
+                nombre,
+                titulo,
+                comentario,
+                estrellas
+            }
+
+            let reseñas = JSON.parse(localStorage.getItem("reseñas")) || []
+            reseñas.push(nuevaReseña)
+            localStorage.setItem("reseñas", JSON.stringify(reseñas))
+
+            formReseña.reset()
+            alert("¡Gracias por tu reseña!")
         })
     }
 
@@ -100,5 +157,44 @@ document.addEventListener("DOMContentLoaded", () => {
             alert("Carrito vaciado correctamente.")
         })
     }
-    
+
+    let contenedor = document.getElementById("listado-reseñas")
+    if (contenedor) {
+        let reseñas = JSON.parse(localStorage.getItem("reseñas")) || []
+
+        reseñas.forEach(resena => {
+            let div = document.createElement("div")
+            div.classList.add("resena")
+            div.innerHTML = `
+            <h3>${resena.titulo}</h3>
+            <p>${resena.comentario}</p>
+            <p>${resena.estrellas}</p>
+            <p>- ${resena.nombre}</p>
+        `
+            contenedor.appendChild(div)
+        })
+    }
+
+    let campoPregunta = document.getElementById("nuevaPregunta")
+    let botonGuardar = document.getElementById("guardarPregunta")
+    let listaPreguntas = document.getElementById("listaPreguntas")
+
+    if (campoPregunta && botonGuardar && listaPreguntas) {
+        let preguntasGuardadas = JSON.parse(localStorage.getItem("preguntas")) || []
+        preguntasGuardadas.forEach(p => renderPregunta(p))
+        botonGuardar.addEventListener("click", () => {
+            let texto = campoPregunta.value.trim()
+            if (texto === "") return
+            renderPregunta(texto)
+            preguntasGuardadas.push(texto)
+            localStorage.setItem("preguntas", JSON.stringify(preguntasGuardadas))
+            campoPregunta.value = ""
+        })
+    }
+
+    function renderPregunta(texto) {
+        let item = document.createElement("li")
+        item.textContent = texto
+        listaPreguntas.appendChild(item)
+    }
 })

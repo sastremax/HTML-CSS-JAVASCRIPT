@@ -130,23 +130,52 @@
                         carrito
                     </button>
                 </div>                
-            </div>
-            <section class="acciones-carrito">
-                <button id="vaciar-carrito">Vaciar carrito</button>
-            </section>
+            </div>            
+        </section>
+        <section>
+            <h2>Conocé más productos disponibles en nuestra tienda asociada</h2>            
+            <div id="productos-api" class="products-container"></div>
+        </section>        
+        <section class="carrito-panel">
+            <h3>Carrito</h3>
+            <p>Productos en el carrito: <span id="contador-carrito">0</span></p>
+            <button id="vaciar-carrito">Vaciar carrito</button>
         </section>
         <section class="reviews-section">
             <h2>Reseñas de productos</h2>
-            <button id="agregarReviewNotebook">Agregar reseña</button>
+        
+            <form id="form-reseña" class="contact-section">
+                <label for="nombreAutor">Tu nombre</label>
+                <input type="text" id="nombreAutor" required placeholder="Ej: Mariana Pérez">            
+                <label for="tituloReseña">Producto reseñado</label>
+                <input type="text" id="tituloReseña" required placeholder="Ej: Notebook Gamer Acer">            
+                <label for="contenidoReseña">Comentario</label>
+                <textarea id="contenidoReseña" required placeholder="Contanos tu experiencia..."></textarea>
+                <label for="estrellasReseña">
+                    Calificación
+                </label>
+                <select id="estrellasReseña" required>
+                    <option value="⭐">⭐</option>
+                    <option value="⭐⭐">⭐⭐</option>
+                    <option value="⭐⭐⭐">⭐⭐⭐</option>
+                    <option value="⭐⭐⭐⭐">⭐⭐⭐⭐</option>
+                    <option value="⭐⭐⭐⭐⭐" selected>⭐⭐⭐⭐⭐</option>
+                </select>            
+                <button type="submit">
+                    Enviar reseña
+                </button>
+            </form>        
             <div id="contenedorResenas" class="reviews-grid"></div>
         </section>
-        <section class="lista-dinamica">
-            <h2>Lista de productos dinámicos</h2>
-            <ul id="listaDinamica">
-                <li>Producto inicial</li>
-            </ul>
-            <button id="agregarElemento">Agregar producto</button>
-        </section>        
+        <section class="preguntas-personales">
+            <h2>¿Tenés dudas?</h2>
+            <p>Escribí tus preguntas sobre los productos</p>
+        
+            <input type="text" id="nuevaPregunta" placeholder="Ej: ¿Tiene garantía?">
+            <button id="guardarPregunta">Guardar</button>
+        
+            <ul id="listaPreguntas"></ul>
+        </section>      
     </main>
     <footer class="footer">
         <div class="footer-contact">
