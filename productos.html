@@ -13,7 +13,7 @@
     <header>
         <img src="images/logo.png" alt="Logo de Mundo PC" width="120">
         <h1>Productos | Mundo PC</h1>
-        <h2>Conocé nuestra línea completa de productos</h2>
+        <h2>Conocé nuestra línea completa de productos</h2>        
     </header>
 
     <nav>
@@ -25,6 +25,10 @@
             <li><a href="index.html#resenas">Reseñas</a></li>
             <li><a href="index.html#contacto">Contacto</a></li>
         </ul>
+        <a href="carrito.html" id="carrito-info" class="carrito-compacto">
+            <span class="carrito-icono">🛒</span>
+            <span id="contador-carrito">0</span>
+        </a>
     </nav>
 
     <main>
@@ -36,63 +40,84 @@
                     <h3>PC Gamer Ryzen</h3>
                     <p>Procesador Ryzen 5, 16GB RAM, RTX 3060.</p>
                     <p class="price">$670.499</p>
-                    <button class="add-to-cart">Agregar al carrito</button>
+                    <button 
+                        class="add-to-cart"
+                        data-id="1"
+                        data-nombre="PC Gamer Ryzen"
+                        data-precio="670499"
+                    >
+                        Agregar al carrito
+                    </button>
                 </div>
                 
                 <div class="product-card">
                     <img src="images/Notebook Intel i7.webp" alt="Notebook Intel i7" class="product-image">
                     <h3>Notebook Intel i7</h3>
                     <p>Intel Core i7, 16GB RAM, SSD 512GB.</p>
-                    <p class="price">$1.359.299</p>
-                    <button class="add-to-cart">Agregar al carrito</button>
+                    <p class="price">$1359299</p>
+                    <button class="add-to-cart" data-id="2" data-nombre="Notebook Intel i7" data-precio="1359299">Agregar al
+                        carrito
+                    </button>
                 </div>
                 
                 <div class="product-card">
                     <img src="images/Combo Periféricos.webp" alt="Combo Periféricos" class="product-image">
                     <h3>Combo Periféricos</h3>
                     <p>Teclado, mouse y auriculares RGB.</p>
-                    <p class="price">$32.999</p>
-                    <button class="add-to-cart">Agregar al carrito</button>
+                    <p class="price">$32999</p>
+                    <button class="add-to-cart" data-id="3" data-nombre="Combo Periféricos" data-precio="32999">Agregar al
+                        carrito
+                    </button>
                 </div>
                 
                 <div class="product-card">
                     <img src="images/Monitor 24 Full HD.webp" alt="Monitor 24 pulgadas" class="product-image">
                     <h3>Monitor 24&quot; Full HD</h3>
                     <p>Resolución 1920x1080, panel IPS, 75Hz.</p>
-                    <p class="price">$227.219</p>
-                    <button class="add-to-cart">Agregar al carrito</button>
+                    <p class="price">$227219</p>
+                    <button class="add-to-cart" data-id="4" data-nombre="Monitor 24 Full HD" data-precio="227219">Agregar al
+                        carrito
+                    </button>
                 </div>
                 
                 <div class="product-card">
                     <img src="images/Mouse Gamer RGB.webp" alt="Mouse Gamer RGB" class="product-image">
                     <h3>Mouse Gamer RGB</h3>
                     <p>Sensor óptico 7200 DPI, 6 botones programables.</p>
-                    <p class="price">$40.699</p>
-                    <button class="add-to-cart">Agregar al carrito</button>
+                    <p class="price">$40699</p>
+                    <button class="add-to-cart" data-id="5" data-nombre="Mouse Gamer RGB" data-precio="40699">Agregar al
+                        carrito
+                    </button>
                 </div>
                 
                 <div class="product-card">
                     <img src="images/Gabinete con Vidrio Templado.webp" alt="Gabinete Vidrio Templado" class="product-image">
                     <h3>Gabinete con Vidrio Templado</h3>
                     <p>Incluye 3 coolers RGB y espacio para GPU grande.</p>
-                    <p class="price">$1.237.895</p>
-                    <button class="add-to-cart">Agregar al carrito</button>
+                    <p class="price">$1237895</p>
+                    <button class="add-to-cart" data-id="6" data-nombre="Gabinete con Vidrio Templado" data-precio="1237895">Agregar al
+                        carrito
+                    </button>
                 </div>
                 
                 <div class="product-card">
                     <img src="images/Fuente de alimentación para PC.webp" alt="Fuente 650W" class="product-image">
                     <h3>Fuente 650W 80 Plus Bronze</h3>
                     <p>Alto rendimiento y eficiencia para PC Gamer.</p>
-                    <p class="price">$43.990</p>
-                    <button class="add-to-cart">Agregar al carrito</button>
+                    <p class="price">$43990</p>
+                    <button class="add-to-cart" data-id="7" data-nombre="Fuente 650W" data-precio="43990">
+                        Agregar al carrito
+                    </button>
                 </div>
                 
                 <div class="product-card">
-                    <img src="images/SSD Sandisk Extreme M.2 500 GB.webp" alt="Disco SSD 1TB" class="product-image">
+                    <img src="images/SSD Sandisk Extreme M.2 500 GB.webp" alt="Disco SSD 500GB" class="product-image">
                     <h3>Disco SSD 500GB</h3>
                     <p>SSD Sandisk Extreme M.2 Pcle Nvme de 500 GB, lectura de 5000 MB/s</p>
-                    <p class="price">$69.500</p>
-                    <button class="add-to-cart">Agregar al carrito</button>
+                    <p class="price">$69500</p>
+                    <button class="add-to-cart" data-id="8" data-nombre="Disco SSD 500GB" data-precio="69500">Agregar al
+                        carrito
+                    </button>
                 </div>
                 
                 <div class="product-card">
@@ -100,10 +125,15 @@
                         class="product-image">
                     <h3>Auriculares Inalámbricos</h3>
                     <p>Bluetooth, micrófono incorporado y cancelación de ruido.</p>
-                    <p class="price">$205.622</p>
-                    <button class="add-to-cart">Agregar al carrito</button>
-                </div>
+                    <p class="price">$205622</p>
+                    <button class="add-to-cart" data-id="9" data-nombre="Auriculares Inalámbricos" data-precio="205622">Agregar al
+                        carrito
+                    </button>
+                </div>                
             </div>
+            <section class="acciones-carrito">
+                <button id="vaciar-carrito">Vaciar carrito</button>
+            </section>
         </section>
         <section class="reviews-section">
             <h2>Reseñas de productos</h2>

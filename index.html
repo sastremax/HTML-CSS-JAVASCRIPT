@@ -97,7 +97,6 @@
                         <p class="price">$670.499</p>
                         <button class="add-to-cart">Agregar al carrito</button>
                     </div>
-
                     <div class="product-card">
                         <img src="images/Notebook Intel i7.webp" alt="Notebook Intel i7" class="product-image">
                         <h3>Notebook Intel i7</h3>
@@ -105,62 +104,11 @@
                         <p class="price">$1.359.299</p>
                         <button class="add-to-cart">Agregar al carrito</button>
                     </div>
-
                     <div class="product-card">
                         <img src="images/Combo Periféricos.webp" alt="Combo Periféricos" class="product-image">
                         <h3>Combo Periféricos</h3>
                         <p>Teclado, mouse y auriculares RGB.</p>
                         <p class="price">$32.999</p>
-                        <button class="add-to-cart">Agregar al carrito</button>
-                    </div>
-
-                    <div class="product-card">
-                        <img src="images/Monitor 24 Full HD.webp" alt="Monitor 24 pulgadas" class="product-image">
-                        <h3>Monitor 24&quot; Full HD</h3>
-                        <p>Resolución 1920x1080, panel IPS, 75Hz.</p>
-                        <p class="price">$227.219</p>
-                        <button class="add-to-cart">Agregar al carrito</button>
-                    </div>
-
-                    <div class="product-card">
-                        <img src="images/Mouse Gamer RGB.webp" alt="Mouse Gamer RGB" class="product-image">
-                        <h3>Mouse Gamer RGB</h3>
-                        <p>Sensor óptico 7200 DPI, 6 botones programables.</p>
-                        <p class="price">$40.699</p>
-                        <button class="add-to-cart">Agregar al carrito</button>
-                    </div>
-
-                    <div class="product-card">
-                        <img src="images/Gabinete con Vidrio Templado.webp" alt="Gabinete Vidrio Templado"
-                            class="product-image">
-                        <h3>Gabinete con Vidrio Templado</h3>
-                        <p>Incluye 3 coolers RGB y espacio para GPU grande.</p>
-                        <p class="price">$1.237.895</p>
-                        <button class="add-to-cart">Agregar al carrito</button>
-                    </div>
-
-                    <div class="product-card">
-                        <img src="images/Fuente de alimentación para PC.webp" alt="Fuente 650W" class="product-image">
-                        <h3>Fuente 650W 80 Plus Bronze</h3>
-                        <p>Alto rendimiento y eficiencia para PC Gamer.</p>
-                        <p class="price">$43.990</p>
-                        <button class="add-to-cart">Agregar al carrito</button>
-                    </div>
-
-                    <div class="product-card">
-                        <img src="images/SSD Sandisk Extreme M.2 500 GB.webp" alt="Disco SSD 1TB" class="product-image">
-                        <h3>Disco SSD 500GB</h3>
-                        <p>SSD Sandisk Extreme M.2 Pcle Nvme de 500 GB, lectura de 5000 MB/s</p>
-                        <p class="price">$69.500</p>
-                        <button class="add-to-cart">Agregar al carrito</button>
-                    </div>
-
-                    <div class="product-card">
-                        <img src="images/Auriculares Inalámbricos Beats Studio Buds.webp" alt="Auriculares Inalámbricos"
-                            class="product-image">
-                        <h3>Auriculares Inalámbricos</h3>
-                        <p>Bluetooth, micrófono incorporado y cancelación de ruido.</p>
-                        <p class="price">$205.622</p>
                         <button class="add-to-cart">Agregar al carrito</button>
                     </div>
                 </div>
@@ -291,6 +239,24 @@
                 <h2>Así disfrutan nuestros clientes</h2>
                 <p>Viví la tecnología con Mundo PC</p>
             </div>
+        </section>
+        <section id="preferencias">
+            <h2>Preferencias del Usuario</h2>
+            <form id="form-preferencias">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" required>
+        
+                <label for="colorFondo">Color de fondo:</label>
+                <select id="colorFondo">
+                    <option value="white">Blanco</option>
+                    <option value="lightgray">Gris claro</option>
+                    <option value="black">Negro</option>
+                    <option value="lightblue">Celeste</option>
+                </select>
+        
+                <button type="submit">Guardar preferencias</button>
+            </form>
+            <p id="saludo"></p>
         </section>
     </main>
 
