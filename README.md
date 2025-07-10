@@ -1,11 +1,11 @@
 # Mundo PC: Equipos y Accesorios Electrónicos
 
 Este proyecto es una página web desarrollada con HTML y CSS.  
-El objetivo fue construir un sitio completo para una tienda de computadoras, componentes y artículos electrónicos, aplicando todas las herramientas vistas desde la Clase 1 hasta la Clase 7.
+El objetivo fue construir un sitio completo para una tienda de computadoras, componentes y artículos electrónicos.
 
 ## Contenido del sitio
 
-- Menú de navegación con enlaces internos simulados.
+- Un Menú de navegación con enlaces internos simulados.
 - Secciones: Inicio, Productos, Nosotros, Servicios, Reseñas, Contacto.
 - Listas ordenadas, desordenadas y de definición.
 - Enlaces absolutos, relativos, `mailto` y descarga de PDF.
